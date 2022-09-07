@@ -12,8 +12,8 @@ header h1 {
 }
 
 header p {
-    color: rgb(221, 167, 32)
-    ;
+    color: rgb(221, 167, 32);
+    font-size:larger;
 }
 
 .scores {
@@ -23,7 +23,6 @@ header p {
 
 .left {
     color: white;
-    
 }
 
 .right {
@@ -45,4 +44,11 @@ header p {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.play {
+    font-size: larger;
+    height: 50px;
+    width: 100px;
+    border: 2px solid black
 }
