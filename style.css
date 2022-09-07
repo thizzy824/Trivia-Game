@@ -1,0 +1,17 @@
+body {
+    background-color: lightgray;
+}
+
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    color: crimson;   
+}
+
+header p {
+    color: rgb(221, 167, 32)
+    ;
+}
