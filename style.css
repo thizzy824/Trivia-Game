@@ -1,5 +1,5 @@
 body {
-    background-color: lightgray;
+    background-color: rgb(132, 131, 131);
 }
 
 
@@ -14,4 +14,21 @@ header h1 {
 header p {
     color: rgb(221, 167, 32)
     ;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    color: white;
+    
+}
+
+.right {
+    color: white;
+    position: relative;
+    float: right;
+
 }
