@@ -31,6 +31,12 @@ const hint6 = 'The Godfather series'
 const hint7 = '6th round pick, #199th overall'
 
 /*----- app's state (variables) -----*/
+// Variables grabbed from HTML
+let score = document.querySelector('.score')
+
+let highScore = document.querySelector('.high-score')
+
+let playButton = document.querySelector('.play')
 
 
 
