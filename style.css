@@ -1,54 +1,68 @@
 body {
-    background-color: rgb(132, 131, 131);
+    background-color: lightgray;
 }
 
-
-header {
-    text-align: center;
+/* target everything */
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 60%;
 }
 
-header h1 {
-    color: crimson;   
+h1 {
+    color: rgb(171, 26, 55);
+    font-size: 87px;
+    margin-bottom: 75px;
 }
 
-header p {
-    color: rgb(221, 167, 32);
-    font-size:larger;
+h2 {
+    font-size: 71px;
+    margin-bottom: 60px;
 }
 
-.scores {
+.container {
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 30px;
 }
 
-.left {
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.button {
+    font-size: 37px;
+    padding: 30px;
+    text-align: center;
+    width: 480px;
+    margin-bottom: 16px;
+    text-decoration: none;
     color: white;
+    background-color: blue;
+    border-radius: 3px;
 }
 
-.right {
-    color: white;
-    position: relative;
-    float: right;
-
+.button[disabled] {
+    cursor: not-allowed;
 }
 
-.box {
-    height: 400px;
-    position: relative;
-    border: 3px solid red
-}
-.game {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+#hall-of-fame {
+    background: rgb(254, 217, 4);
 }
 
-.play {
-    font-size: larger;
-    height: 50px;
-    width: 100px;
-    border: 2px solid black
-}
