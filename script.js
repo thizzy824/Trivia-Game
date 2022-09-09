@@ -110,3 +110,13 @@ const totalQuestions = 7
 
 
 /*----- functions -----*/
+// create function to play game
+playGame = () => {
+    // set default values
+	questionNumber = 0;
+	score = 0;
+	// [...] get all values (in this case objects)in an array
+	// https://codeburst.io/what-are-three-dots-in-javascript-6f09476b03e1
+	remainingQuestions = [...questions]
+    nextQuestion()
+}

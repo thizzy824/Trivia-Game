@@ -1,5 +1,5 @@
 body {
-    background-color: lightgray;
+    background-color: black;
 }
 
 /* target everything */
@@ -11,9 +11,9 @@ body {
 }
 
 h1 {
-    color: rgb(171, 26, 55);
+    color: white;
     font-size: 87px;
-    margin-bottom: 75px;
+    margin-bottom: 40px;
 }
 
 h2 {
