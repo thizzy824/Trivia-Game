@@ -32,14 +32,22 @@ h2 {
     padding: 30px;
 }
 
-.flex {
+.flex-column {
     display: flex;
     flex-direction: column;
 }
 
-.center {
+.flex-center {
     justify-content: center;
     align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
 }
 
 .hidden {
@@ -65,4 +73,3 @@ h2 {
 #hall-of-fame {
     background: rgb(254, 217, 4);
 }
-

@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Trivia</title>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="trivia.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div id="trivia" class="justify-center flex-column">
+				<div class="display-panel">
+					<div class="display-item">
+						<p id="current-text" class="display-default">Question</p>
+					</div>
+					<div class="display-item">
+						<p class="display-default">Score</p>
+						<h1 class="display-text" id="score">0</h1>
+					</div>
+				</div>
+				<h1 id="question">Select the Correct Answer</h1>
+				<div class="answer-container">
+					<p class="answer-default">1</p>
+					<p class="answer-text" data-num="1">Answer</p>
+				</div>
+				<div class="answer-container">
+					<p class="answer-default">2</p>
+					<p class="answer-text" data-num="2">Answer</p>
+				</div>
+				<div class="answer-container">
+					<p class="answer-default">3</p>
+					<p class="answer-text" data-num="3">Answer</p>
+				</div>
+				<div class="answer-container">
+					<p class="answer-default">4</p>
+					<p class="answer-text" data-num="4">Answer</p>
+				</div>
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</body>
 </html>
