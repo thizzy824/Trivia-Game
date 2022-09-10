@@ -9,8 +9,12 @@ body {
     margin-bottom: 12px;
     border-radius: 4px;
     background: rgb(121, 38, 121);
-    font-size: 48px;
+    font-size: 30px;
     min-width: 1280px;
+}
+
+.answer-container:hover {
+    cursor:pointer;
 }
 
 .answer-default {
@@ -19,8 +23,7 @@ body {
 }
 
 .answer-text {
-    padding: 32px;
-    width: 100%;
+    padding: 32px; 
 }
 
 .right {
@@ -32,16 +35,18 @@ body {
 }
 
 /* display */
-#display-panel {
+#display  {
     display: flex;
     justify-content: space-between;
-}
-
-.display-text {
-    text-align: center;
-    font-size: 50px;
+    flex-direction: column;
+    align-items: center;
 }
 
 .display-default {
+    text-align: center;
+    font-size: 30px;
+}
+
+.display-text {
     color: white;
 }
