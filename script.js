@@ -102,8 +102,6 @@ const pointsAwarded = 1000;
 // set total number of questions
 const totalQuestions = 7;
 
-/*----- event listeners -----*/
-
 /*----- functions -----*/
 // create function to play game
 playGame = () => {
@@ -116,7 +114,7 @@ playGame = () => {
 	nextQuestion();
 };
 // create function to prompt next question
-nextQuestion = () => {
+getNextQuestion = () => {
 	// if there are 0 remaining questions-save last score
 	if (remainingQuestions.length === 0 || questionNumber > totalQuestions) {
 		// https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem
@@ -136,14 +134,51 @@ nextQuestion = () => {
 	currentQuestion = remainingQuestions[questionsIndex];
 	question.innerText = currentQuestion.question;
 	// forEach method to apply to all answer text
-
+	
 	answers.forEach((option) => {
 		const number = answers.dataset['num'];
 		option.innerText = currentQuestion['option' + number];
 	});
-
+	
 	//  remove elements from the remainingQuestions array using splice method
 	remainingQuestions.splice(questionsIndex, 1);
-
+	
 	takeAnswers = true;
 };
+
+/*----- event listeners -----*/
+
+answers.forEach(option => {
+	option.addEventListener('click', e => {
+		// if the game isnt taking answers, function ends
+		if (!takeAnswers) {
+			return
+		}
+		// set variable made earlier takeAnswers to false
+		takeAnswers = false
+		const optionChosen = e.target
+		const answerChosen = optionChosen.dataset['num']
+		// apply styling class to right/wrong answers using conditional ternary operators
+		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+		let classBeingApplied = answerChosen == currentQuestion.answer ? 'correct' : 'incorrect'
+		// create another conditional to increase score
+		if (classBeingApplied === 'correct') {
+			awardPoints(pointsAwarded)
+		}
+		// add classBeingApplied to optionChosen using classList.add method
+		optionChosen.parentElement.classList.add(classBeingApplied)
+		// remove class added after a set amount of time using setTimeout method and classlist.remove method
+		setTimeout(() => {
+			optionChosen.parentElement.classList.remove(classBeingApplied)
+			// run getNextQuestion function to proceed to next question after timer set
+			getNextQuestion()
+		}, 1000)
+	})
+})
+
+awardPoints = points => {
+	score += points
+	scoreCount.innerText = score
+}
+
+playGame()
