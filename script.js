@@ -94,13 +94,38 @@ let questions = [
 		option4: 'Tom Brady',
 		answer: 4,
 	},
+	{
+		question: 'Which City did the St. Louis Rams move their team to?',
+		option1: 'Minnesota',
+		option2: 'Los Angeles',
+		option3: 'Indianapolis',
+		option4: 'Detroit',
+		answer: 2,
+	},
+	{
+		question: 'Which team is the only team to go undefeated in a season?',
+		option1: 'Miami Dolphins',
+		option2: 'GreenBay Packers',
+		option3: 'New England Patriots',
+		option4: 'Dallas Cowboys',
+		answer: 1,
+	},
+	{
+		question:
+			'What player threw for 30+ Touchdowns and 30+ Interceptions in the same season?',
+		option1: 'Joe Montana',
+		option2: 'Jamarcus Russell',
+		option3: 'Brett Favre',
+		option4: 'Jameis Winston',
+		answer: 4,
+	},
 ];
 
 /*----- cached element references -----*/
 // point system
 const POINTS_AWARDED = 1000;
 // set total number of questions
-const TOTAL_QUESTIONS = 7;
+const TOTAL_QUESTIONS = 10;
 
 /*----- functions -----*/
 // create function to play game
@@ -135,7 +160,7 @@ getNextQuestion = () => {
 	question.innerText = currentQuestion.question;
 	// forEach method to apply to all answer text
 
-	answers.forEach(option => {
+	answers.forEach((option) => {
 		const number = option.dataset['num'];
 		option.innerText = currentQuestion['option' + number];
 	});
@@ -149,7 +174,7 @@ getNextQuestion = () => {
 /*----- event listeners -----*/
 
 answers.forEach((option) => {
-	option.addEventListener('click', e => {
+	option.addEventListener('click', (e) => {
 		// if the game isnt taking answers, function ends
 		if (!takingAnswers) {
 			return;
@@ -160,7 +185,8 @@ answers.forEach((option) => {
 		const answerChosen = optionChosen.dataset['num'];
 		// apply styling class to right/wrong answers using conditional ternary operators
 		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
-		let classBeingApplied = answerChosen == currentQuestion.answer ? 'right' : 'wrong';
+		let classBeingApplied =
+			answerChosen == currentQuestion.answer ? 'right' : 'wrong';
 		// create another conditional to increase score
 		if (classBeingApplied === 'right') {
 			awardPoints(POINTS_AWARDED);
@@ -176,7 +202,7 @@ answers.forEach((option) => {
 	});
 });
 
-awardPoints = points => {
+awardPoints = (points) => {
 	score += points;
 	scoreCount.innerText = score;
 };
