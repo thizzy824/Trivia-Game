@@ -1,7 +1,8 @@
 body {
-    background-color: black;
+    background: black;
 }
 
+/* https: //www.w3schools.com/css/css3_box-sizing.asp */
 /* target everything */
 * {
     box-sizing: border-box;
@@ -22,6 +23,7 @@ h2 {
 }
 
 .container {
+    background-color: black;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -64,6 +66,7 @@ h2 {
     color: white;
     background-color: rgb(27, 181, 247);
     border-radius: 3px;
+    text-shadow: 2px 2px 1px red;
 }
 
 .button:hover {
@@ -79,4 +82,5 @@ h2 {
 
 #end-text {
     color: white;
+    text-shadow: 2px 2px 1px red;
 }
