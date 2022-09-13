@@ -24,15 +24,22 @@
 // Variables grabbed from HTML
 const question = document.querySelector('#question');
 // use an array method array.from that creates new array from answers
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 const answers = Array.from(document.querySelectorAll('.answer-text'));
 const currentLevel = document.querySelector('#currentText');
+// create a variable that will keep the updated score
 const scoreCount = document.querySelector('#score');
 // create empty object
 let currentQuestion = {};
 // variables that will change/be updated
+
+// set default boolean value
 let takingAnswers = true;
+// set initial score variable to 0 (no handicaps here lol)
 let score = 0;
+// set variable for question number with default value of 0
 let questionNumber = 0;
+// create empty array that will have values later
 let remainingQuestions = [];
 
 // create array and object with questions and answer options
@@ -122,7 +129,8 @@ let questions = [
 ];
 
 /*----- cached element references -----*/
-// point system
+// CAPS syntax because the values will not be changed
+// create a point system
 const POINTS_AWARDED = 1000;
 // set total number of questions
 const TOTAL_QUESTIONS = 10;
@@ -130,10 +138,10 @@ const TOTAL_QUESTIONS = 10;
 /*----- functions -----*/
 // create function to play game
 playGame = () => {
-	// set default values
+	// set default values for game
 	questionNumber = 0;
 	score = 0;
-	// [...] get all values (in this case objects)in an array
+	// [...] get all values (in this case objects)in an array and set to empty array
 	// https://codeburst.io/what-are-three-dots-in-javascript-6f09476b03e1
 	remainingQuestions = [...questions];
 	getNextQuestion();
@@ -142,9 +150,10 @@ playGame = () => {
 getNextQuestion = () => {
 	// if there are 0 remaining questions-save last score
 	if (remainingQuestions.length === 0 || questionNumber > TOTAL_QUESTIONS) {
+		alert('GAME OVER!');
 		// https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem
-		// use setItem method of storage interface when passed a key name/value
-		localStorage.setItem('lastScore', score);
+		// use setItem method of storage interface when passed a key name/value to display final scoreCount
+		localStorage.setItem(scoreCount, score);
 		// https://developer.mozilla.org/en-US/docs/Web/API/Location/assign
 		// use location.assign method to cause the window to load and display on the URL specified
 		return window.location.assign('game-over.html');
@@ -157,15 +166,17 @@ getNextQuestion = () => {
 	const questionsIndex = Math.floor(Math.random() * remainingQuestions.length);
 	// keep track of what question player is currently on
 	currentQuestion = remainingQuestions[questionsIndex];
+	// (.question) refers to key name "question" in object questions[]
 	question.innerText = currentQuestion.question;
 	// forEach method to apply to all answer text
 
 	answers.forEach((option) => {
+		// create variable that takes data-set of 'num'
 		const number = option.dataset['num'];
 		option.innerText = currentQuestion['option' + number];
 	});
 
-	//  remove elements from the remainingQuestions array using splice method
+	//  remove elements from the remainingQuestions array using the splice method
 	remainingQuestions.splice(questionsIndex, 1);
 
 	takingAnswers = true;
@@ -175,19 +186,27 @@ getNextQuestion = () => {
 
 answers.forEach((option) => {
 	option.addEventListener('click', (e) => {
-		// if the game isnt taking answers, function ends
+		// if the game isn't taking answers, function ends
 		if (!takingAnswers) {
 			return;
 		}
 		// set variable made earlier takeAnswers to false
 		takingAnswers = false;
+		// create variable to reference option/parameter of (e)
+		// https://developer.mozilla.org/en-US/docs/Web/API/Event/target
 		const optionChosen = e.target;
+		// create another variable to represent the dataset created earlier
 		const answerChosen = optionChosen.dataset['num'];
-		// apply styling class to right/wrong answers using conditional ternary operators
-		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+		// create variable to apply needed classes right/wrong (green vs red)
 		let classBeingApplied =
-			answerChosen == currentQuestion.answer ? 'right' : 'wrong';
-		// create another conditional to increase score
+		answerChosen == currentQuestion.answer ? 'right' : 'wrong';
+		// apply styling class to right/wrong answers using conditional ternary operators
+		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator --- consists of 3 parameters
+		// use value as a conditon // if answerChosen == currentQuestion.answer ?
+		// expression if truthy classBeingApplied = 'right' followed by a colon(:)
+		// expression if falsy classBeingApplied ='wrong'
+
+		// create another conditional to increase score if right
 		if (classBeingApplied === 'right') {
 			awardPoints(POINTS_AWARDED);
 		}
@@ -202,6 +221,7 @@ answers.forEach((option) => {
 	});
 });
 
+// function to award points/update scoreCount
 awardPoints = (points) => {
 	score += points;
 	scoreCount.innerText = score;
